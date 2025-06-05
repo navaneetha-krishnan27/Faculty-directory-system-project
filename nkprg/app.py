@@ -9,12 +9,12 @@ app.config['MYSQL_PASSWORD'] = 'Digidara1000'
 app.config['MYSQL_DB'] = 'faculty_db'
 
 mysql = MySQL(app)
-@app.route('/facultyhome')
+@app.route('/')
 def faculty_home():
     return render_template('faculty_home.html')
 
 
-@app.route('/')
+@app.route('/showfaculty')
 def show_faculty():
     cur = mysql.connection.cursor()
     cur.execute("SELECT id, name, title, department, photo FROM faculty")
@@ -53,6 +53,18 @@ def add_faculty():
 @app.route('/about')
 def about():
     return render_template('faculty_about.html')
+
+@app.route('/search')
+def search():
+    query = request.args.get('query')
+    cur = mysql.connection.cursor()
+    cur.execute("""SELECT id, name, title, department, photo 
+                   FROM faculty 
+                   WHERE name LIKE %s OR department LIKE %s""", 
+                   (f"%{query}%", f"%{query}%"))
+    results = cur.fetchall()
+    return render_template('faculty_list.html', faculty=results)
+
 
 
 if __name__ == '__main__':

@@ -108,75 +108,100 @@ footer a:hover {
     text-align: center;
 }
  .directory{
-             body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f5f7fa;
-        margin: 0;
-        padding: 40px;
-        color: #333;
-    }
+            /* FACULTY LIST STYLING */
 
-    h1 {
-        text-align: center;
-        color: #2c3e50;
-        margin-bottom: 30px;
-    }
+body {
+    background-color: #f5f7fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
 
-    ul {
-        list-style: none;
-        padding: 0;
-        max-width: 800px;
-        margin: 0 auto;
-    }
+/* Directory container */
+.directory {
+    max-width: 1200px;
+    margin: 80px auto 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
 
-    li {
-        background-color: #fff;
-        padding: 20px;
-        margin-bottom: 15px;
-        border-radius: 10px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
+.directory h1 {
+    color: #003366;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
 
-    li img {
-        border-radius: 8px;
-        margin-left: 20px;
-        max-width: 100px;
-        height: auto;
-    }
+/* Faculty cards grid */
+.directory ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-    li a {
-        font-weight: bold;
-        text-decoration: none;
-        color: #2980b9;
-    }
+/* Individual card */
+.faculty-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 260px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    li a:hover {
-        text-decoration: underline;
-    }
+.faculty-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
 
-    a[href="/templates/add_faculty.html"] {
-        display: block;
-        text-align: center;
-        margin-top: 30px;
-        padding: 12px 20px;
-        background-color: #27ae60;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 8px;
-        width: 150px;
-        margin-left: auto;
-        margin-right: auto;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-    }
+.faculty-card img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
 
-    a[href="/add"]:hover {
-        background-color: #219150;
+.faculty-card h2 {
+    font-size: 20px;
+    color: #003366;
+    margin: 10px 0 5px 0;
+}
+
+.faculty-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Add Faculty Button */
+a[href="/add"] {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 24px;
+    background-color: #27ae60;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+a[href="/add"]:hover {
+    background-color: #219150;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .faculty-card {
+        width: 90%;
     }
+}
+
         }
          .addfaculty{
              body {
