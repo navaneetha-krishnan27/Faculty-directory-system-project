@@ -45,15 +45,17 @@ Karaikudi - 630 003, Tamil Nadu, India</strong></p><br>
         {% for f in faculty %}
   <div class="faculty-card">
     <a href="/faculty/{{ f[0] }}">
-      <img src="{{ url_for('static', filename='photos/' ~ f[4]) }}" alt="Photo" width="100">
-      <h2>{{ f[1] }}</h2>
+      <img src="{{ url_for('static', filename='photos/' ~ f[4]) }}" onerror="this.onerror=null; this.src='/image/image_icon.jpg';" alt="Photo" width="100"><br>
+     <diV class="main">
+       <h2>{{ f[1] }}</h2>
       <p>{{ f[2] }} - {{ f[3] }}</p>
+      </diV>
     </a>
   </div>
 {% endfor %}
 
     </ul>
-    <a href="/add">Add Faculty</a>
+    <a href="/login">Add Faculty</a>
     </div>
     <div class="video-background">
     <video autoplay loop muted playsinline>
