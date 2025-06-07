@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>faculty directory system</title>
-    <link rel="stylesheet" href="/static/facultystyle.css">
+  <meta charset="UTF-8">
+  <title>Admin Login - Faculty Directory</title>
+     <link rel="stylesheet" href="/static/facultystyle.css">
 </head>
-<body>
-    <header> 
+<body class="container py-5">
+  <header> 
         
             <div class="logo">
         
@@ -29,20 +28,20 @@ Karaikudi - 630 003, Tamil Nadu, India</strong></p><br>
             </nav>
             </div>
         </header>
-        <main>
-           <br><br>
-            <section>
-                <center>
-                    <img class="myslides" src="/static/image/alagappaengimg.jpg" height="600px" width="1000px">
-                    <img class="myslides" src="/static/image/scienceblockimg.jpg" height="600px" width="1000px">
-                    <img class="myslides" src="/static/image/universityimg.jpg" height="600px" width="1000px">
-                    <img class="myslides" src="/static/image/MEMORANDUM OF UNDERSTANDING (MOU) - I.jpg" height="600px" width="1000px">
-                </center>
-            </section>
-            <br>
-            <br>
-        </main>
-        <div class="video-background">
+  <center>
+  <div class="login-container">
+    <h2>Admin Login</h2>
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+    <form method="post">
+      <input type="text" name="username" placeholder="Username" required><br>
+      <input type="password" name="password" placeholder="Password" required><br>
+      <input type="submit" value="Login">
+    </form>
+  </div>
+</center>
+   <div class="video-background">
     <video autoplay loop muted playsinline>
       <source src="/static/video/tronlegacy2.mp4" type="video/mp4">
       Your browser does not support the video tag.
@@ -54,24 +53,5 @@ Karaikudi - 630 003, Tamil Nadu, India</strong></p><br>
                 <center><br>© 2025 Alagappa University, Karaikudi, Tamilnadu</center>
             </div>
         </footer>
-        <script>
-// Automatic Slideshow - change image every 3 seconds
-var myIndex = 0;
-carousel();
-
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("myslides");
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
-  }
-  myIndex++;
-  if (myIndex > x.length) {myIndex = 1}
-  x[myIndex-1].style.display = "block";
-  setTimeout(carousel, 3000);
-}
-</script>
-
-
 </body>
 </html>

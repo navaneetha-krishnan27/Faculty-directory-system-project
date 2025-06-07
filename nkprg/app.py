@@ -27,9 +27,42 @@ def view_profile(id):
     cur.execute("SELECT * FROM faculty WHERE id = %s", (id,))
     faculty = cur.fetchone()
     return render_template('faculty_profile.html', faculty=faculty)
+@app.route('/about')
+def about():
+    return render_template('faculty_about.html')
+
+@app.route('/search')
+def search():
+    query = request.args.get('query')
+    cur = mysql.connection.cursor()
+    cur.execute("""SELECT id, name, title, department, photo 
+                   FROM faculty 
+                   WHERE name LIKE %s OR department LIKE %s""", 
+                   (f"%{query}%", f"%{query}%"))
+    results = cur.fetchall()
+    return render_template('faculty_list.html', faculty=results)
+from flask import session, url_for
+
+app.secret_key = 'your_secret_key'  # Required for session handling
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username == 'admin' and password == 'admin123':
+            session['admin'] = True
+            return redirect('/add')
+        else:
+            error = 'Invalid credentials'
+    return render_template('login.html', error=error)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_faculty():
+    if not session.get('admin'):
+        return redirect('/login')
+        # Add faculty logic here (same as before)
     if request.method == 'POST':
         name = request.form['name']
         title = request.form['title']
@@ -50,22 +83,6 @@ def add_faculty():
         mysql.connection.commit()
         return redirect('/')
     return render_template('add_faculty.html')
-@app.route('/about')
-def about():
-    return render_template('faculty_about.html')
-
-@app.route('/search')
-def search():
-    query = request.args.get('query')
-    cur = mysql.connection.cursor()
-    cur.execute("""SELECT id, name, title, department, photo 
-                   FROM faculty 
-                   WHERE name LIKE %s OR department LIKE %s""", 
-                   (f"%{query}%", f"%{query}%"))
-    results = cur.fetchall()
-    return render_template('faculty_list.html', faculty=results)
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
