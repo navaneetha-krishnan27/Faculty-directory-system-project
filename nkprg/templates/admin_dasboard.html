@@ -39,24 +39,29 @@ Karaikudi - 630 003, Tamil Nadu, India</strong></p><br>
     </form>
   </div>
   </center>
-    <div class="directory">
-     <h1>Faculty Members</h1>
-    <ul>
-        {% for f in faculty %}
-  <div class="faculty-card">
-    <a href="/faculty/{{ f[0] }}">
-      <img src="{{ url_for('static', filename='photos/' ~ f[4]) }}" onerror="this.onerror=null; this.src='/image/image_icon.jpg';" alt="Photo" width="100"><br>
-     <diV class="main">
-       <h2>{{ f[1] }}</h2>
-      <p>{{ f[2] }} - {{ f[3] }}</p>
-      </diV>
-    </a>
-  </div>
-{% endfor %}
-
-    </ul>
-    
+  <div class="directory">
+  <h1>Faculty Members</h1>
+  <ul>
+    {% for f in faculty %}
+    <div class="faculty-card">
+      <a href="/faculty/{{ f[0] }}">
+        <img src="{{ url_for('static', filename='photos/' ~ f[4]) }}" onerror="this.onerror=null; this.src='/image/image_icon.jpg';" alt="Photo" width="100"><br>
+        <div class="main">
+          <h2>{{ f[1] }}</h2>
+          <p>{{ f[2] }} - {{ f[3] }}</p>
+        </div>
+      </a>
+      <div class="faculty-actions">
+        <a href="/edit/{{ f[0] }}">Edit</a> |
+        <a href="/delete/{{ f[0] }}" onclick="return confirm('Are you sure you want to delete this faculty?');">Delete</a>
+      </div>
     </div>
+    {% endfor %}
+  </ul>
+
+  <a href="/add">Add Faculty</a>
+</div>
+
     <div class="video-background">
     <video autoplay loop muted playsinline>
       <source src="/static/video/tronlegacy2.mp4" type="video/mp4">

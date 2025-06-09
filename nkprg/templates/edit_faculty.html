@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculty list</title>
+    <title>Faculty list edit</title>
      <link rel="stylesheet" href="/static/facultystyle.css">
 
     </head>
-    <body>
+<body>
     <header> 
         
             <div class="logo">
@@ -32,30 +32,18 @@ Karaikudi - 630 003, Tamil Nadu, India</strong></p><br>
         </header>
         <br>
         <center>
-        <div class="search-container">
-    <form action="/search" method="GET">
-      <input type="text" name="query" class="search-box" placeholder="Search...">
-      <button type="submit" class="search-button">Search</button>
+    <h1>Edit Faculty Member</h1>
+    <div class='faculty-form'>
+    <form method="post">
+        <input type="text" name="name" value="{{ faculty[1] }}" required><br>
+        <input type="text" name="title" value="{{ faculty[2] }}"><br>
+        <input type="text" name="department" value="{{ faculty[3] }}"><br>
+        <input type="email" name="email" value="{{ faculty[4] }}"><br>
+        <input type="text" name="phone" value="{{ faculty[5] }}"><br>
+        <textarea name="bio">{{ faculty[6] }}</textarea><br>
+        <input type="submit" value="Update">
     </form>
-  </div>
-  </center>
-    <div class="directory">
-     <h1>Faculty Members</h1>
-    <ul>
-        {% for f in faculty %}
-  <div class="faculty-card">
-    <a href="/faculty/{{ f[0] }}">
-      <img src="{{ url_for('static', filename='photos/' ~ f[4]) }}" onerror="this.onerror=null; this.src='/image/image_icon.jpg';" alt="Photo" width="100"><br>
-     <diV class="main">
-       <h2>{{ f[1] }}</h2>
-      <p>{{ f[2] }} - {{ f[3] }}</p>
-      </diV>
-    </a>
-  </div>
-{% endfor %}
-
-    </ul>
-    
+    <a href="/">Back to List</a>
     </div>
     <div class="video-background">
     <video autoplay loop muted playsinline>
