@@ -20,5 +20,7 @@ CREATE TABLE admin_users (
 INSERT INTO admin_users (username, password)
 VALUES ('admin', 'admin123');
 select * from admin_users;
+select * from faculty;
+
 
 

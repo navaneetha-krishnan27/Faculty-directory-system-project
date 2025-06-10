@@ -24,6 +24,7 @@ def show_faculty():
     faculty_list = cur.fetchall()
     return render_template('faculty_list.html', faculty=faculty_list)
 
+
 @app.route('/faculty/<int:id>')
 def view_profile(id):
     cur = mysql.connection.cursor()
@@ -45,6 +46,7 @@ def search():
                    (f"%{query}%", f"%{query}%"))
     results = cur.fetchall()
     return render_template('faculty_list.html', faculty=results)
+
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_faculty():
