@@ -57,6 +57,23 @@ Karaikudi - 630 003, Tamil Nadu, India</strong></p><br>
     </ul>
     
     </div>
+    <div class="pagination">
+    {% if page > 1 %}
+        <a href="{{ url_for('show_faculty', page=page-1) }}">Previous</a>
+    {% endif %}
+
+    {% for p in range(1, total_pages + 1) %}
+        {% if p == page %}
+            <strong>{{ p }}</strong>
+        {% else %}
+            <a href="{{ url_for('show_faculty', page=p) }}">{{ p }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page < total_pages %}
+        <a href="{{ url_for('show_faculty', page=page+1) }}">Next</a>
+    {% endif %}
+</div>
 
     <div class="video-background">
     <video autoplay loop muted playsinline>
